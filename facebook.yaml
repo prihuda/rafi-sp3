@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: php-pesbuk
+  namespace: stagging
+  labels:
+    app: facebook
+spec:
+  volumes:
+    - name: config-fb
+      configMap:
+        name: fb-configmap-sp3
+
+  containers:
+  - name: sosial-media
+    image: prihuda22/sosial-media-sp3:v2
+    ports:
+    - containerPort: 8081
+    volumeMounts:
+    - name: config-fb
+      mountPath: "/var/www/html/config.php"
+      subPath: "config.php"

@@ -1,0 +1,14 @@
+apiVersion: apps/v1beta2
+kind: Service
+apiVersion: v1
+metadata:
+  name: sosial-media-sp3
+  namespace: stagging
+spec:
+  type: LoadBalancer
+  selector:
+    app: facebook
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8081
